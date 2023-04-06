@@ -10,7 +10,6 @@
 	ProductBean product = (ProductBean) request.getAttribute("product");
 	
 	Cart cart = (Cart) request.getAttribute("cart");
-
 %>
 
 <!DOCTYPE html>

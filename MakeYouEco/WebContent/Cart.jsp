@@ -25,22 +25,14 @@
 			<th>Action</th>
 		</tr>
 		<% List<ProductBean> prodcart = cart.getProducts();
-		   List<Integer> quantity = cart.getQuantity();
-		   int i = 0;
 		   for(ProductBean beancart: prodcart) {
 		%>
 		<tr>
 			<td><%=beancart.getName()%></td>
 			<td><%=beancart.getPrice()%> €</td>
-			<td>
-				<form action="UpdateQuantity" method="post">
-					<input type="text" name="quantity" value=""><%=quantity.get(i)%>
-					<input type="submit" value="Invia">
-				</form>
-			</td>
 			<td><a href="product?action=deleteC&id=<%=beancart.getCode()%>">Delete from cart</a></td>
 		</tr>
-		<% i++;
+		<%
 		} %>
 	</table>
 	<% } %>	

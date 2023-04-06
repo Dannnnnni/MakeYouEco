@@ -37,7 +37,7 @@ public class ProductModelDS implements ProductModel {
 		PreparedStatement preparedStatement = null;
 
 		String insertSQL = "INSERT INTO " + ProductModelDS.TABLE_NAME
-				+ " (NAME, DESCRIPTION, PRICE, WEIGHT, IMAGE, QUANTITY, IVA) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ " (NAME, DESCRIPTION, PRICE, QUANTITY) VALUES (?, ?, ?, ?)";
 
 		try {
 			connection = ds.getConnection();
@@ -45,11 +45,8 @@ public class ProductModelDS implements ProductModel {
 			preparedStatement.setString(1, product.getName());
 			preparedStatement.setString(2, product.getDescription());
 			preparedStatement.setInt(3, product.getPrice());
-			preparedStatement.setFloat(4, product.getWeight());
-			preparedStatement.setString(5, product.getImage());
-			preparedStatement.setInt(6, product.getQuantity());
-			preparedStatement.setInt(7, product.getIva());
-			
+			preparedStatement.setInt(4, product.getQuantity());
+
 			preparedStatement.executeUpdate();
 
 			connection.commit();
@@ -85,10 +82,7 @@ public class ProductModelDS implements ProductModel {
 				bean.setName(rs.getString("NAME"));
 				bean.setDescription(rs.getString("DESCRIPTION"));
 				bean.setPrice(rs.getInt("PRICE"));
-				bean.setWeight(rs.getFloat("WEIGHT"));
-				bean.setImage(rs.getString("IMAGE"));
 				bean.setQuantity(rs.getInt("QUANTITY"));
-				bean.setIva(rs.getInt("IVA"));
 			}
 
 		} finally {
@@ -157,10 +151,7 @@ public class ProductModelDS implements ProductModel {
 				bean.setName(rs.getString("NAME"));
 				bean.setDescription(rs.getString("DESCRIPTION"));
 				bean.setPrice(rs.getInt("PRICE"));
-				bean.setWeight(rs.getFloat("WEIGHT"));
-				bean.setImage(rs.getString("IMAGE"));
 				bean.setQuantity(rs.getInt("QUANTITY"));
-				bean.setIva(rs.getInt("IVA"));
 				products.add(bean);
 			}
 
